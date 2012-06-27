@@ -1,13 +1,13 @@
 {
-  "name": "MyExtension",
+  "name": "SkelJS",
   "description": "JavaScript-Driven MediaWiki Extension Skeleton",
   "authors": [
       "Ori Livneh <ori@wikimedia.org>"
   ],
   "version": "0.0.1",
   "engine": "node >= 0.6",
-  "main": "./lib/e3.js",
-  "repository" : { "type":"git", "url":"git://gerrit.wikimedia.org/mediawiki/extensions/E3Experiments.git" },
+  "main": "./lib/ext.SkelJS.js",
+  "repository" : { "type":"git", "url":"git://gerrit.wikimedia.org/mediawiki/extensions/SkelJS.git" },
   "devDependencies": {
     "grunt": "0.3.9"
   },

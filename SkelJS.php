@@ -10,7 +10,7 @@
  * @version 0.0.1
  */
 
-$localBasePath = dirname( __FILE__ );
+
 
 // -------
 // Setup
@@ -25,25 +25,18 @@ $wgExtensionCredits['specialpage'][] = array(
         'descriptionmsg' => 'skeljs-desc',
 );
 
-$wgExtensionMessagesFiles['SkelJS'] = $localBasePath . '/SkelJS.i18n.php';
+$wgAutoloadClasses['SkelJSHooks'] = dirname( __FILE__ ) . '/SkelJS.hooks.php';
+
+$wgExtensionMessagesFiles['SkelJS'] = dirname( __FILE__ ) . '/SkelJS.i18n.php';
+
+
+// TODO: Preconfigure 'top' and 'bottom' module. 
+// Cf http://www.mediawiki.org/wiki/ResourceLoader/Migration_guide_for_extension_developers#Inline_JavaScript
 
 $wgResourceModules['ext.SkelJS'] = array(
-        'scripts'       => glob( 'lib/*.js' ),
-        'localBasePath' => $localBasePath,
-        'remoteExtPath' => 'SkelJS'
-);
-
-
-// ---------
-// Testing
-//
-
-$wgEnableJavaScriptTest = true;
-$testModules['qunit']['SkelJS.tests'] = array(
-        'scripts'       => glob( 'tests/*.test.js' ),
-        'dependencies'  => $wgResourceModules['ext.SkelJS']['scripts'],
-        'localBasePath' => $localBasePath,
-        'remoteExtPath' => 'SkelJS'
+				'scripts'       => SkelJSHooks::globRelative( '/modules/*.js' ),
+				'localBasePath' => SkelJSHooks::$dir,
+				'remoteExtPath' => 'SkelJS'
 );
 
 
@@ -51,7 +44,8 @@ $testModules['qunit']['SkelJS.tests'] = array(
 // Hooks
 //
 
-$wgAutoloadClasses['SkelJSHooks'] = $localBasePath . '/SkelJS.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'SkelJSHooks::beforePageDisplay';
+
+$wgHooks['ResourceLoaderTestModules'][] = 'SkelJSHooks::addTestModules';
 
 /* vim: set sw=8:ts=8:sts=0: */
