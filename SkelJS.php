@@ -17,12 +17,12 @@
 //
 
 $wgExtensionCredits['specialpage'][] = array(
-        'path'           => __FILE__,
-        'name'           => 'JavaScript-Driven MediaWiki Extension Skeleton',
-        'version'        => '0.0.1',
-        'url'            => 'https://www.mediawiki.org/wiki/Extension:SkelJS',
-        'author'         => array( 'Ori Livneh' ),
-        'descriptionmsg' => 'skeljs-desc',
+	'path'           => __FILE__,
+	'name'           => 'JavaScript-Driven MediaWiki Extension Skeleton',
+	'version'        => '0.0.1',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SkelJS',
+	'author'         => array( 'Ori Livneh' ),
+	'descriptionmsg' => 'skeljs-desc',
 );
 
 $wgAutoloadClasses['SkelJSHooks'] = dirname( __FILE__ ) . '/SkelJS.hooks.php';
@@ -34,9 +34,9 @@ $wgExtensionMessagesFiles['SkelJS'] = dirname( __FILE__ ) . '/SkelJS.i18n.php';
 // Cf http://www.mediawiki.org/wiki/ResourceLoader/Migration_guide_for_extension_developers#Inline_JavaScript
 
 $wgResourceModules['ext.SkelJS'] = array(
-				'scripts'       => SkelJSHooks::globRelative( '/modules/*.js' ),
-				'localBasePath' => SkelJSHooks::$dir,
-				'remoteExtPath' => 'SkelJS'
+	'scripts'       => SkelJSHooks::globRelative( '/modules/*.js' ),
+	'localBasePath' => SkelJSHooks::$dir,
+	'remoteExtPath' => 'SkelJS'
 );
 
 
@@ -47,5 +47,3 @@ $wgResourceModules['ext.SkelJS'] = array(
 $wgHooks['BeforePageDisplay'][] = 'SkelJSHooks::beforePageDisplay';
 
 $wgHooks['ResourceLoaderTestModules'][] = 'SkelJSHooks::addTestModules';
-
-/* vim: set sw=8:ts=8:sts=0: */
