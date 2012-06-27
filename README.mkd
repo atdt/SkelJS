@@ -1,0 +1,36 @@
+SkelJS
+======
+SkelJS aims to be a reference implementation of a JavaScript-centric MediaWiki
+extension, embodying best practices.
+
+Out of the box, you get:
+
+- QUnit test scaffold
+- ResourceLoader integration
+- MediaWiki-compatible JSHint config
+- Command-line build tool (`grunt`)
+
+Todos
+-----
+SkelJS is currently a very rough draft. More input and refinements are
+necessary before it is ready for public consumption.
+
+- TestSwarm integration
+- Top / bottom module setup
+- Sample JS code, using mw.loader
+- Maybe: grunt.js syntaxCheck.php integration
+- Maybe: Parse module configuration from JSON file so that no edits to PHP code
+  are required
+
+Usage
+-----
+First, install the requirements: `node`, `npm`, `grunt` and `phantomjs`'.
+
+Add the following line to `LocalSettings.php`:
+
+```php
+require_once( "$IP/extensions/SkelJS/SkelJS.php" );
+```
+
+Run `grunt` in the extension's root directory to lint your JavaScript code and
+run unit tests.
